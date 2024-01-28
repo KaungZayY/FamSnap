@@ -13,4 +13,13 @@ class Image extends Model
     {
         return $this->belongsTo(Album::class);
     }
+
+    public function scopeFilter($query, $filters)
+    {
+        if(isset($filters['album_id'])){
+            $query->whereHas('album',function ($filterQry) use($filters){
+                $filterQry->where('id',$filters['album_id']);
+            });
+        }
+    }
 }

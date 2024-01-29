@@ -28,3 +28,9 @@ Route::get('/images',[ImageController::class,'index']);
 Route::post('/images',[ImageController::class,'store']);
 //get a single image
 Route::get('/images/{image}',[ImageController::class,'show']);
+//update a single image
+Route::patch('/images/{image}',[ImageController::class,'update']);
+//delete a single image
+Route::delete('/images/{image}',[ImageController::class,'destroy']);
+//upload an image
+Route::post('/images/upload',[ImageController::class,'upload']);

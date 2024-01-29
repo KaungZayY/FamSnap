@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\ImageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,4 +20,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//get all albums
+Route::get('/albums',[AlbumController::class,'index']);
+
+//get all images, with filter
 Route::get('/images',[ImageController::class,'index']);
+Route::post('/images',[ImageController::class,'store']);
+//get a single image
+Route::get('/images/{image}',[ImageController::class,'show']);

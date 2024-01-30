@@ -187,4 +187,22 @@ class ImageController extends Controller
             ],500);
         }
     }
+
+    /**
+     * search single image by name
+     * GET /api/images/search/:title
+     * @param image_title
+     */
+    public function search($title)
+    {
+        try {
+            $image = Image::where('title','LIKE','%'.$title.'%')->get();
+            return $image;
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage(),
+                'status' => 404,
+            ],404);
+        }
+    }
 }

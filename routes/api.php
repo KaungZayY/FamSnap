@@ -27,6 +27,8 @@ Route::get('/albums',[AlbumController::class,'index']);
 Route::get('/images',[ImageController::class,'index']);
 //get a single image
 Route::get('/images/{image}',[ImageController::class,'show']);
+//search an image by title
+Route::get('/images/search/{title}',[ImageController::class,'search']);
 
 //register user
 Route::post('/register',[UserController::class,'store']);
